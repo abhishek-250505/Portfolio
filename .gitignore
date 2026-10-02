@@ -12,8 +12,10 @@ dist
 dist-ssr
 *.local
 
-#.env file
+# Frontend-only repo exclusions
+server/
 .env
+.env.*
 
 # Editor directories and files
 .vscode/*
