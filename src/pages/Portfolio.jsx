@@ -196,8 +196,8 @@ const Portfolio = () => {
       });
       const result = await readApiResponse(response);
       setChatMessages((current) => [...current, { role: "assistant", content: result.reply }]);
-    } catch (error) {
-      setChatMessages((current) => [...current, { role: "assistant", content: error.message || "The assistant is unavailable right now." }]);
+    } catch {
+      setChatMessages((current) => [...current, { role: "assistant", content: "The chatbot is a work in progress while its backend is being built. Please check back soon." }]);
     } finally {
       setChatBusy(false);
     }
@@ -251,7 +251,7 @@ const Portfolio = () => {
         </>}
       </main>
 
-      <Assistant isOpen={chatOpen} onOpen={() => setChatOpen(true)} onClose={() => setChatOpen(false)} onReset={resetChat} messages={chatMessages} busy={chatBusy} input={chatInput} setInput={setChatInput} onSubmit={submitChat} />
+      <Assistant isOpen={chatOpen} onOpen={() => setChatOpen(true)} onClose={() => setChatOpen(false)} onReset={resetChat} darkMode={darkMode} onToggleTheme={handleTheme} messages={chatMessages} busy={chatBusy} input={chatInput} setInput={setChatInput} onSubmit={submitChat} />
     </div>
   );
 };
